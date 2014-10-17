@@ -1,4 +1,4 @@
-<?php namespace App\Providers;
+<?php namespace CepBR\Providers;
 
 use Exception;
 use Illuminate\Contracts\Logging\Log;

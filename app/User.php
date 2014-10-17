@@ -1,4 +1,4 @@
-<?php namespace App;
+<?php namespace CepBR;
 
 use Illuminate\Auth\UserTrait;
 use Illuminate\Database\Eloquent\Model;

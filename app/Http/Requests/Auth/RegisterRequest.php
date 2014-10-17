@@ -1,4 +1,4 @@
-<?php namespace App\Http\Requests\Auth;
+<?php namespace CepBR\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
 

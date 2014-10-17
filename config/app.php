@@ -98,12 +98,12 @@ return [
 		/*
 		 * Application Service Providers...
 		 */
-		'App\Providers\AppServiceProvider',
-		'App\Providers\ArtisanServiceProvider',
-		'App\Providers\ErrorServiceProvider',
-		'App\Providers\EventServiceProvider',
-		'App\Providers\LogServiceProvider',
-		'App\Providers\RouteServiceProvider',
+		'CepBR\Providers\AppServiceProvider',
+		'CepBR\Providers\ArtisanServiceProvider',
+		'CepBR\Providers\ErrorServiceProvider',
+		'CepBR\Providers\EventServiceProvider',
+		'CepBR\Providers\LogServiceProvider',
+		'CepBR\Providers\RouteServiceProvider',
 
 		/*
 		 * Laravel Framework Service Providers...

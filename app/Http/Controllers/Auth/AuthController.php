@@ -1,9 +1,9 @@
-<?php namespace App\Http\Controllers\Auth;
+<?php namespace CepBR\Http\Controllers\Auth;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Contracts\Auth\Guard;
-use App\Http\Requests\Auth\LoginRequest;
-use App\Http\Requests\Auth\RegisterRequest;
+use CepBR\Http\Requests\Auth\LoginRequest;
+use CepBR\Http\Requests\Auth\RegisterRequest;
 
 /**
  * @Middleware("guest", except={"logout"})

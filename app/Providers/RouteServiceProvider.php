@@ -1,4 +1,4 @@
-<?php namespace App\Providers;
+<?php namespace CepBR\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -10,7 +10,7 @@ class RouteServiceProvider extends ServiceProvider {
 	 *
 	 * @var string
 	 */
-	protected $rootUrlNamespace = 'App\Http\Controllers';
+	protected $rootUrlNamespace = 'CepBR\Http\Controllers';
 
 	/**
 	 * The controllers to scan for route annotations.
@@ -18,9 +18,9 @@ class RouteServiceProvider extends ServiceProvider {
 	 * @var array
 	 */
 	protected $scan = [
-		'App\Http\Controllers\HomeController',
-		'App\Http\Controllers\Auth\AuthController',
-		'App\Http\Controllers\Auth\PasswordController',
+		'CepBR\Http\Controllers\HomeController',
+		'CepBR\Http\Controllers\Auth\AuthController',
+		'CepBR\Http\Controllers\Auth\PasswordController',
 	];
 
 	/**
