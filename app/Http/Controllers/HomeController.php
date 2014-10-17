@@ -2,6 +2,7 @@
 
 use Illuminate\Routing\Controller;
 use CepBR\Endereco;
+use Exception;
 use Response;
 use Input;
 
@@ -12,13 +13,20 @@ class HomeController extends Controller {
 	 */
 	public function getByCep($cep)
 	{
-		try {
+		$response = [];
+
+		try
+		{
 			$endereco = Endereco::with([
 					'Cidade', 'Logradouro', 'Bairro'
 				])
-				->findOrFail($cep);
+				->whereId($cep)
+				->first();
 
-			return Response::json([
+			if (! $endereco)
+				throw new Exception('Cep not found, trying get from Correios.');
+
+			$response = [
 				'endereco' => [
 					'logradouro' => $endereco->logradouro->nome,
 					'bairro' => $endereco->bairro->nome,
@@ -27,12 +35,15 @@ class HomeController extends Controller {
 					'uf' => $endereco->cidade->estado->uf,
 					'cep' => $endereco->id
 				]
-			])->setCallback(Input::get('callback'));;
+			];
 		}
 		catch (Exception $e)
 		{
-
+			return var_dump($e->getMessage());
 		}
+
+		return Response::json($response)
+			->setCallback(Input::get('callback'));
 	}
 
 	/**
