@@ -1,26 +1,46 @@
 <?php namespace CepBR\Http\Controllers;
 
 use Illuminate\Routing\Controller;
+use CepBR\Endereco;
+use Response;
+use Input;
 
 class HomeController extends Controller {
 
-	/*
-	|--------------------------------------------------------------------------
-	| Home Controller
-	|--------------------------------------------------------------------------
-	|
-	| Controller methods are called when a request enters the application
-	| with their assigned URI. The URI a method responds to may be set
-	| via simple annotations. Here is an example to get you started!
-	|
-	*/
+	/**
+	 * @Get("v1/endereco/{id}", as="procuraCep")
+	 */
+	public function getByCep($cep)
+	{
+		try {
+			$endereco = Endereco::with([
+					'Cidade', 'Logradouro', 'Bairro'
+				])
+				->findOrFail($cep);
+
+			return Response::json([
+				'endereco' => [
+					'logradouro' => $endereco->logradouro->nome,
+					'bairro' => $endereco->bairro->nome,
+					'cidade' => $endereco->cidade->nome,
+					'estado' => $endereco->cidade->estado->nome,
+					'uf' => $endereco->cidade->estado->uf,
+					'cep' => $endereco->id
+				]
+			])->setCallback(Input::get('callback'));;
+		}
+		catch (Exception $e)
+		{
+
+		}
+	}
 
 	/**
 	 * @Get("/")
 	 */
 	public function index()
 	{
-		return view('hello');
+		return "hi";
 	}
 
 }
